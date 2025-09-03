@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>El Salterio</title>
+  <style>
+
+    body {
+
+      margin: 0;
+      padding: 0;
+      background: url('fondo.jpg') center center fixed;
+      background-size: cover;
+      background-repeat: no-repeat;
+      font-family: Arial, sans-serif;
+      color: #fff8dc;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 40px;
+      font-size: 3em;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    .icono-salterio {
+      font-size: 1.5em;
+      margin-right: 10px;
+    }
+
+    .intro {
+      max-width: 700px;
+      margin: 20px auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    .boton-libro {
+      display: inline-block;
+      margin: 15px;
+      padding: 15px 25px;
+      font-size: 18px;
+      background-color: rgba(101, 67, 33, 0.85); /* Café oscuro */
+      color: #fff8dc;
+      border: 2px solid #fff8dc;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .boton-libro:hover {
+      background-color: rgba(150, 111, 51, 0.9);
+      transform: scale(1.05);
+    }
+
+    .contenedor-botones {
+      margin-top: 30px;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 0.9em;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 15px;
+    }
+
+    a.tooltip {
+      position: relative;
+    }
+
+    a.tooltip:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: 50%;
+      bottom: 130%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff8dc;
+      padding: 8px 12px;
+      border-radius: 5px;
+      white-space: nowrap;
+      font-size: 0.9em;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+<iframe width="560" height="315"
+        src="https://www.youtube.com/embed/A_NgFdH9X4w?rel=0"
+        title="Salmos en video"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+</iframe>
+
+
+
+
+  <h1><span class="icono-salterio">📖</span>El Salterio</h1>
+
+  <div class="intro">
+    <p>El <strong>Salterio</strong> es una colección de 150 salmos, organizados en cinco libros, El salterio tiene horizontes de una ideologia que atraviesa los salmos sobre "el mesias"
+el centro historico es David y el horizonte Geografico es el monte de Sion: Palestina,Juda,Jerusalen.</p>
+    
+  </div>
+
+  <div class="contenedor-botones">
+    <a class="boton-libro tooltip" href="libro1.html" target="_blank"
+       data-tooltip="Salmos de David, confianza y súplica.">✝️📘 Libro I: Salmo 3‑41 (38 Salmos)</a><br>
+    <a class="boton-libro tooltip" href="libro2.html" target="_blank"
+       data-tooltip="Contexto de la monarquía. Refleja crisis y esperanza.">✝️📗 Libro II: Salmo 42‑72 (31 Salmos)</a><br>
+    <a class="boton-libro tooltip" href="libro3.html" target="_blank"
+       data-tooltip="Salmos de Asaf y los hijos de Coré. Enfoque levítico.">✝️📙 Libro III: Salmo 73‑89 (17 Salmos)</a><br>
+    <a class="boton-libro tooltip" href="libro4.html" target="_blank"
+       data-tooltip="Salmos posteriores al exilio. Dios como Rey eterno.">✝️📕 Libro IV: Salmo 90‑106 (17 Salmos)</a><br>
+    <a class="boton-libro tooltip" href="libro5.html" target="_blank"
+       data-tooltip="Cantos de alabanza y acción de gracias.">✝️📒 Libro V: Salmo 107‑150 (39 Salmos)</a>
+  </div>
+
+  <footer>
+    <p>¿Qué es un salmo? Descúbrelo en este <a href="https://www.bibliatodo.com/la-biblia/Biblia-de-Jerusalen/salmos-91" target="_blank" style="color: #fff8dc; text-decoration: underline;">artículo introductorio</a>.</p>
+  </footer>
+
+
+
+  <button onclick="toggleMusica()" id="botonMusica">🔈 Pausar música</button>
+
+   <audio id="musicaFondo" autoplay loop>
+    <source src="sila.mp3" type="audio/mpeg">
+    Tu navegador no soporta el audio.
+  </audio>
+
+  <script>
+    // Activa música en primer clic (para cumplir con reglas de autoplay)
+    window.addEventListener('click', function () {
+      const musica = document.getElementById("musicaFondo");
+      if (musica && musica.paused) {
+        musica.play().catch(error => {
+          console.log("Error al reproducir:", error);
+        });
+      }
+    }, { once: true });
+
+    // Botón de control
+    const musica = document.getElementById("musicaFondo");
+    const boton = document.getElementById("botonMusica");
+
+    function toggleMusica() {
+      if (musica.paused) {
+        musica.play();
+        boton.innerHTML = "🔈 Pausar música";
+      } else {
+        musica.pause();
+        boton.innerHTML = "🔇 Reanudar música";
+      }
+    }
+  </script>
+</body>
